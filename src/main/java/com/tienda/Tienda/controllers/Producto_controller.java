@@ -23,22 +23,22 @@ public class Producto_controller {
     @Autowired
     private Producto_repositorio repositorio;
 
-    @GetMapping("/productos")
+    @GetMapping("/api/productos")
     public List<producto> getProductos() {
         return repositorio.findAll();
     }
 
-    @GetMapping("/producto/{id}")
+    @GetMapping("/api/producto/{id}")
     public Optional<producto> getProducto(@PathVariable("id") Integer id) {
         return repositorio.findById(id);
     }
 
-    @PostMapping("/producto")
+    @PostMapping("/api/producto")
     public producto save(@RequestBody producto nuevo) {
         return repositorio.save(nuevo);
     }
 
-    @PutMapping("/producto/{id}")
+    @PutMapping("/api/producto/{id}")
     public producto update(@PathVariable("id") Integer id, @RequestBody producto data) {
 
         Optional<producto> actual = repositorio.findById(id);
@@ -50,7 +50,7 @@ public class Producto_controller {
         return repositorio.save(actual.get());
     }
 
-    @DeleteMapping("/producto/{id}")
+    @DeleteMapping("/api/producto/{id}")
     public void delete(@PathVariable("id") Integer id) {
         repositorio.deleteById(id);
     }

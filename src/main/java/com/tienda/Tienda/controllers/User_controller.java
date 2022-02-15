@@ -18,17 +18,17 @@ public class User_controller {
 
     private User_repositorio repositorio;
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/api/user/{id}")
     public Optional<User> getCliente(@PathVariable("id") Integer id) {
         return repositorio.findById(id);
     }
 
-    @PostMapping("/user")
+    @PostMapping("/api/user")
     public User save(@RequestBody User nuevo) {
         return repositorio.save(nuevo);
     }
 
-    @PutMapping("/cliente")
+    @PutMapping("/api/user/{id}")
     public User update(@PathVariable("id") Integer id, @RequestBody User data) {
 
         Optional<User> actual = repositorio.findById(id);
@@ -40,7 +40,7 @@ public class User_controller {
         return repositorio.save(actual.get());
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/api/user/{id}")
     public void delete(@PathVariable Integer id) {
         repositorio.deleteById(id);
     }

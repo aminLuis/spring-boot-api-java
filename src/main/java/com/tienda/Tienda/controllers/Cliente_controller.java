@@ -19,22 +19,22 @@ public class Cliente_controller {
 
     private Cliente_repositorio repositorio;
 
-    @GetMapping("/clientes")
+    @GetMapping("/api/clientes")
     public List<Cliente> getClientes() {
         return repositorio.findAll();
     }
 
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/api/cliente/{id}")
     public Optional<Cliente> getCliente(@PathVariable("id") Integer id) {
         return repositorio.findById(id);
     }
 
-    @PostMapping("/cliente")
+    @PostMapping("/api/cliente")
     public Cliente save(@RequestBody Cliente nuevo) {
         return repositorio.save(nuevo);
     }
 
-    @PutMapping("/cliente")
+    @PutMapping("/api/cliente")
     public Cliente update(@PathVariable Integer id, @RequestBody Cliente data) {
 
         Optional<Cliente> actual = repositorio.findById(id);
@@ -47,7 +47,7 @@ public class Cliente_controller {
         return repositorio.save(actual.get());
     }
 
-    @DeleteMapping("/cliente/{id}")
+    @DeleteMapping("/api/cliente/{id}")
     public void delete(@PathVariable("id") Integer id) {
         repositorio.deleteById(id);
     }
