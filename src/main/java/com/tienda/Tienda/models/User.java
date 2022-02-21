@@ -21,6 +21,7 @@ public class User {
     private String apellidos;
     private String email;
     private String password;
+    private String role;
 
     public User() {
         id = 0;
@@ -28,6 +29,7 @@ public class User {
         apellidos = "";
         email = "";
         password = "";
+        role = "";
     }
 
     public void setId(Integer id) {
@@ -68,6 +70,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
     }
 
 }

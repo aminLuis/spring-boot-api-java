@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.tienda.Tienda.models.Cliente;
-import com.tienda.Tienda.repositorio.Cliente_repositorio;
+import com.tienda.Tienda.services.Cliente_service;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Cliente_controller {
 
-    private Cliente_repositorio repositorio;
+    private Cliente_service repositorio;
 
     @GetMapping("/api/clientes")
     public List<Cliente> getClientes() {

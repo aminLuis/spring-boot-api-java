@@ -24,16 +24,15 @@ public class producto implements Serializable {
     private Integer id;
     private String nombre;
     private String descripcion;
-    private double precio;
+    private double costo_unidad;
     private int stock;
     private Date date_register;
 
     public producto() {
         nombre = "";
         descripcion = "";
-        precio = 0;
+        costo_unidad = 0;
         stock = 0;
-        date_register = null;
     }
 
     public void setId(Integer id) {
@@ -60,12 +59,12 @@ public class producto implements Serializable {
         return descripcion;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setCosto_unidad(double costo_unidad) {
+        this.costo_unidad = costo_unidad;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getCosto_unidad() {
+        return costo_unidad;
     }
 
     public void setStock(int stock) {

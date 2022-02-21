@@ -1,11 +1,10 @@
 package com.tienda.Tienda.controllers;
 
-import com.tienda.Tienda.repositorio.Producto_repositorio;
-
 import java.util.List;
 import java.util.Optional;
 
 import com.tienda.Tienda.models.*;
+import com.tienda.Tienda.services.Producto_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Producto_controller {
 
     @Autowired
-    private Producto_repositorio repositorio;
+    private Producto_service repositorio;
 
-    @GetMapping("/api/productos")
+    @GetMapping("/api/producto")
     public List<producto> getProductos() {
         return repositorio.findAll();
     }
@@ -44,7 +43,7 @@ public class Producto_controller {
         Optional<producto> actual = repositorio.findById(id);
         actual.get().setNombre(data.getNombre());
         actual.get().setDescripcion(data.getDescripcion());
-        actual.get().setPrecio(data.getPrecio());
+        actual.get().setCosto_unidad(data.getCosto_unidad());
         actual.get().setStock(data.getStock());
 
         return repositorio.save(actual.get());
