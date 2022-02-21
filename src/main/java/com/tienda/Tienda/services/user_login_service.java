@@ -1,12 +1,20 @@
 package com.tienda.Tienda.services;
 
-import com.tienda.Tienda.models.User;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.tienda.Tienda.models.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class user_login_service implements UserDetailsService {
 
     @Autowired
@@ -15,10 +23,13 @@ public class user_login_service implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User usuario = repositorio.findByNombre(username);
+        Users usuario = repositorio.findBynombre(username);
 
-        // UserDetails userDet = new User(usuario.getNombre(), usuario.getPassword());
-        UserDetails userDet = null;
+        List<GrantedAuthority> roles = new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority("ADMIN"));
+
+        UserDetails userDet = new User(usuario.getNombre(), usuario.getPassword(), roles);
+
         return userDet;
     }
 

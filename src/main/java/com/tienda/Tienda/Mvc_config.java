@@ -1,5 +1,8 @@
 package com.tienda.Tienda;
 
+import com.tienda.Tienda.services.user_login_service;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,6 +15,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class Mvc_config extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private BCryptPasswordEncoder bcrypt;
+    @Autowired
+    private user_login_service userDetailsService;
+
     @Bean
     public BCryptPasswordEncoder passEncoder() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
@@ -21,15 +29,7 @@ public class Mvc_config extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .inMemoryAuthentication()
-                .withUser("user")
-                .password("password")
-                .roles("USER")
-                .and()
-                .withUser("admin")
-                .password("admin")
-                .roles("USER", "ADMIN");
-
+                .userDetailsService(userDetailsService).passwordEncoder(bcrypt);
     }
 
     @Override

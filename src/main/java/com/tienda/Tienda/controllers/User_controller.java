@@ -2,7 +2,7 @@ package com.tienda.Tienda.controllers;
 
 import java.util.Optional;
 
-import com.tienda.Tienda.models.User;
+import com.tienda.Tienda.models.Users;
 import com.tienda.Tienda.services.User_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,20 +26,20 @@ public class User_controller {
     private BCryptPasswordEncoder encoder;
 
     @GetMapping("/api/user/{id}")
-    public Optional<User> getUser(@PathVariable("id") Integer id) {
+    public Optional<Users> getUser(@PathVariable("id") Integer id) {
         return repositorio.findById(id);
     }
 
     @PostMapping("/api/user")
-    public User save(@RequestBody User nuevo) {
+    public Users save(@RequestBody Users nuevo) {
         nuevo.setPassword(encoder.encode(nuevo.getPassword()));
         return repositorio.save(nuevo);
     }
 
     @PutMapping("/api/user/{id}")
-    public User update(@PathVariable("id") Integer id, @RequestBody User data) {
+    public Users update(@PathVariable("id") Integer id, @RequestBody Users data) {
 
-        Optional<User> actual = repositorio.findById(id);
+        Optional<Users> actual = repositorio.findById(id);
         actual.get().setNombre(data.getNombre());
         actual.get().setApellidos(data.getApellidos());
         actual.get().setEmail(data.getEmail());
