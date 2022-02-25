@@ -41,7 +41,8 @@ public class Cliente_controller {
         actual.get().setCedula(data.getCedula());
         actual.get().setNombre(data.getNombre());
         actual.get().setApellidos(data.getApellidos());
-        actual.get().setDireccion(data.getDireccion());
+        actual.get().setLatitud(data.getLatitud());
+        actual.get().setLongitud(data.getLongitud());
         actual.get().setTelefono(data.getTelefono());
 
         return repositorio.save(actual.get());

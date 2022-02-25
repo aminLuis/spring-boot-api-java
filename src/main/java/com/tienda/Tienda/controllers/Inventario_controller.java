@@ -3,8 +3,8 @@ package com.tienda.Tienda.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.tienda.Tienda.models.*;
-import com.tienda.Tienda.services.Producto_service;
+import com.tienda.Tienda.models.Inventario;
+import com.tienda.Tienda.services.Inventario_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,39 +16,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-
-public class Producto_controller {
+public class Inventario_controller {
 
     @Autowired
-    private Producto_service repositorio;
+    private Inventario_service repositorio;
 
-    @GetMapping("/api/producto")
-    public List<producto> getProductos() {
+    @GetMapping("/api/inventario")
+    public List<Inventario> getInventarios() {
         return repositorio.findAll();
     }
 
-    @GetMapping("/api/producto/{id}")
-    public Optional<producto> getProducto(@PathVariable("id") Integer id) {
+    @GetMapping("/api/inventario/{id}")
+    public Optional<Inventario> getInventario(@PathVariable("id") Integer id) {
         return repositorio.findById(id);
     }
 
-    @PostMapping("/api/producto")
-    public producto save(@RequestBody producto nuevo) {
+    @PostMapping("/api/inventario")
+    public Inventario save(@RequestBody Inventario nuevo) {
         return repositorio.save(nuevo);
     }
 
-    @PutMapping("/api/producto/{id}")
-    public producto update(@PathVariable("id") Integer id, @RequestBody producto data) {
+    @PutMapping("/api/inventario/{id}")
+    public Inventario update(@PathVariable("id") Integer id, @RequestBody Inventario data) {
 
-        Optional<producto> actual = repositorio.findById(id);
-        actual.get().setNombre(data.getNombre());
+        Optional<Inventario> actual = repositorio.findById(id);
         actual.get().setDescripcion(data.getDescripcion());
-        actual.get().setPrecio(data.getPrecio());
+        actual.get().setFecha(data.getFecha());
+        actual.get().setEstado(data.getEstado());
 
         return repositorio.save(actual.get());
     }
 
-    @DeleteMapping("/api/producto/{id}")
+    @DeleteMapping("/api/inventario/{id}")
     public void delete(@PathVariable("id") Integer id) {
         repositorio.deleteById(id);
     }

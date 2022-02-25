@@ -24,7 +24,8 @@ public class Cliente implements Serializable {
     private long cedula;
     private String nombre;
     private String apellidos;
-    private String direccion;
+    private String latitud;
+    private String longitud;
     private long telefono;
 
     public Cliente() {
@@ -32,7 +33,8 @@ public class Cliente implements Serializable {
         cedula = 0;
         nombre = "";
         apellidos = "";
-        direccion = "";
+        latitud = "";
+        longitud = "";
         telefono = 0;
     }
 
@@ -68,12 +70,20 @@ public class Cliente implements Serializable {
         return apellidos;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getLatitud() {
+        return latitud;
+    }
+
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
+    }
+
+    public String getLongitud() {
+        return longitud;
     }
 
     public void setTelefono(long telefono) {

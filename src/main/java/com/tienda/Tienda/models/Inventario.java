@@ -1,6 +1,5 @@
 package com.tienda.Tienda.models;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -13,25 +12,22 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "producto")
+@Table(name = "inventario")
 @EntityListeners(AuditingEntityListener.class)
-public class producto implements Serializable {
-
-    private static final long serialVersionUID = 1l;
+public class Inventario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nombre;
     private String descripcion;
-    private double precio;
+    private Date fecha;
+    private String estado;
 
-    private Date date_register;
-
-    public producto() {
-        nombre = "";
+    public Inventario() {
+        id = 0;
         descripcion = "";
-        precio = 0;
+        fecha = null;
+        estado = "";
     }
 
     public void setId(Integer id) {
@@ -42,14 +38,6 @@ public class producto implements Serializable {
         return id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -58,20 +46,20 @@ public class producto implements Serializable {
         return descripcion;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public double getPrecio() {
-        return precio;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setDate_register(Date date_register) {
-        this.date_register = date_register;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public Date getDate_register() {
-        return date_register;
+    public String getEstado() {
+        return estado;
     }
 
 }
