@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.tienda.Tienda.models.Cliente;
 import com.tienda.Tienda.services.Cliente_service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Cliente_controller {
 
+    @Autowired
     private Cliente_service repositorio;
 
-    @GetMapping("/api/clientes")
+    @GetMapping("/api/cliente")
     public List<Cliente> getClientes() {
         return repositorio.findAll();
     }
@@ -34,7 +36,7 @@ public class Cliente_controller {
         return repositorio.save(nuevo);
     }
 
-    @PutMapping("/api/cliente")
+    @PutMapping("/api/cliente/{id}")
     public Cliente update(@PathVariable Integer id, @RequestBody Cliente data) {
 
         Optional<Cliente> actual = repositorio.findById(id);
