@@ -52,4 +52,9 @@ public class Producto_insumo_controller {
         repositorio.deleteById(id);
     }
 
+    @GetMapping("/api/producto_insumo/asignaciones/{id_producto}")
+    public List<Producto_insumo> getAsignaciones(@PathVariable("id_producto") Integer id_producto) {
+        return repositorio.findById_producto(id_producto);
+    }
+
 }
