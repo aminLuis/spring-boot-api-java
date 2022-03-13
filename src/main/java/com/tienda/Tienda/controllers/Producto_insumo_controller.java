@@ -26,11 +26,6 @@ public class Producto_insumo_controller {
         return repositorio.findAll();
     }
 
-    @GetMapping("/api/producto_insumo/{id}")
-    public Optional<Producto_insumo> getInsumo(@PathVariable("id") Integer id) {
-        return repositorio.findById(id);
-    }
-
     @PostMapping("/api/producto_insumo")
     public Producto_insumo save_producto_insumo(@RequestBody Producto_insumo nuevo) {
         return repositorio.save(nuevo);
@@ -42,6 +37,7 @@ public class Producto_insumo_controller {
         Optional<Producto_insumo> actual = repositorio.findById(id);
         actual.get().setId_producto(data.getId_producto());
         actual.get().setId_insumo(data.getId_insumo());
+        actual.get().setDescripcion(data.getDescripcion());
         actual.get().setRestar(data.getRestar());
 
         return repositorio.save(actual.get());

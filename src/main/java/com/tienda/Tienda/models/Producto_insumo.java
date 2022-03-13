@@ -19,12 +19,14 @@ public class Producto_insumo {
     private Integer id;
     private Integer id_producto;
     private Integer id_insumo;
+    private String descripcion;
     private Integer restar;
 
     public Producto_insumo() {
         id = 0;
         id_producto = 0;
         id_insumo = 0;
+        descripcion = "";
         restar = 0;
     }
 
@@ -50,6 +52,14 @@ public class Producto_insumo {
 
     public Integer getId_insumo() {
         return id_insumo;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
     }
 
     public void setRestar(Integer restar) {
