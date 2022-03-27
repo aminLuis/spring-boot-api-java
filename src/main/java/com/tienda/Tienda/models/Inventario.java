@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -18,17 +19,17 @@ public class Inventario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotEmpty
     private Integer id;
-    private String descripcion;
-    private Date fecha;
-    private String estado;
 
-    public Inventario() {
-        id = 0;
-        descripcion = "";
-        fecha = null;
-        estado = "";
-    }
+    @NotEmpty
+    private String descripcion;
+
+    @NotEmpty
+    private Date fecha;
+
+    @NotEmpty
+    private String estado;
 
     public void setId(Integer id) {
         this.id = id;
