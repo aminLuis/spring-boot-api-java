@@ -1,7 +1,6 @@
 package com.tienda.Tienda.models;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -9,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -21,18 +21,17 @@ public class producto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotEmpty
     private Integer id;
+
+    @NotEmpty
     private String nombre;
+
+    @NotEmpty
     private String descripcion;
+
+    @NotEmpty
     private double precio;
-
-    private Date date_register;
-
-    public producto() {
-        nombre = "";
-        descripcion = "";
-        precio = 0;
-    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -64,14 +63,6 @@ public class producto implements Serializable {
 
     public double getPrecio() {
         return precio;
-    }
-
-    public void setDate_register(Date date_register) {
-        this.date_register = date_register;
-    }
-
-    public Date getDate_register() {
-        return date_register;
     }
 
 }

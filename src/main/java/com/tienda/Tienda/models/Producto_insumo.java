@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,19 +17,20 @@ public class Producto_insumo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotEmpty
     private Integer id;
-    private Integer id_producto;
-    private Integer id_insumo;
-    private String descripcion;
-    private Integer restar;
 
-    public Producto_insumo() {
-        id = 0;
-        id_producto = 0;
-        id_insumo = 0;
-        descripcion = "";
-        restar = 0;
-    }
+    @NotEmpty
+    private Integer id_producto;
+
+    @NotEmpty
+    private Integer id_insumo;
+
+    @NotEmpty
+    private String descripcion;
+
+    @NotEmpty
+    private Integer restar;
 
     public void setId(Integer id) {
         this.id = id;
