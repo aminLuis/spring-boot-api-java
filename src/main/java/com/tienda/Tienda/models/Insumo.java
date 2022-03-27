@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,23 +17,26 @@ public class Insumo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotEmpty
     private Integer id;
-    private String nombre;
-    private String descripcion;
-    private double costo_unidad;
-    private Integer stock;
-    private Integer id_inventario;
-    private String inventario;
 
-    public Insumo() {
-        id = 0;
-        nombre = "";
-        descripcion = "";
-        costo_unidad = 0;
-        stock = 0;
-        id_inventario = 0;
-        inventario = "";
-    }
+    @NotEmpty
+    private String nombre;
+
+    @NotEmpty
+    private String descripcion;
+
+    @NotEmpty
+    private double costo_unidad;
+
+    @NotEmpty
+    private Integer stock;
+
+    @NotEmpty
+    private Integer id_inventario;
+
+    @NotEmpty
+    private String inventario;
 
     public void setId(Integer id) {
         this.id = id;

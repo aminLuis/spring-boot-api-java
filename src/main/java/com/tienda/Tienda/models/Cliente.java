@@ -2,12 +2,14 @@ package com.tienda.Tienda.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -20,23 +22,27 @@ public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotEmpty
     private Integer id;
-    private long cedula;
-    private String nombre;
-    private String apellidos;
-    private String latitud;
-    private String longitud;
-    private long telefono;
 
-    public Cliente() {
-        id = 0;
-        cedula = 0;
-        nombre = "";
-        apellidos = "";
-        latitud = "";
-        longitud = "";
-        telefono = 0;
-    }
+    @NotEmpty
+    @Column(unique = true)
+    private long cedula;
+
+    @NotEmpty
+    private String nombre;
+
+    @NotEmpty
+    private String apellidos;
+
+    @NotEmpty
+    private String latitud;
+
+    @NotEmpty
+    private String longitud;
+
+    @NotEmpty
+    private long telefono;
 
     public void setId(Integer id) {
         this.id = id;
