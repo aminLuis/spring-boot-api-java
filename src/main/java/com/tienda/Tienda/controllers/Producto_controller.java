@@ -109,7 +109,7 @@ public class Producto_controller {
             repositorio.save(actual.get());
 
         } catch (DataAccessException e) {
-            response.put("Mensaje", "Error al buscar cliente");
+            response.put("Mensaje", "Error al buscar producto");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
 
@@ -124,7 +124,7 @@ public class Producto_controller {
         try {
             repositorio.deleteById(id);
         } catch (DataAccessException e) {
-            response.put("Mensaje", "Error al eliminar cliente");
+            response.put("Mensaje", "Error al eliminar producto");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

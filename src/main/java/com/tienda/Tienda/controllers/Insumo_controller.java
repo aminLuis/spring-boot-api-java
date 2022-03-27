@@ -114,7 +114,7 @@ public class Insumo_controller {
             repositorio.save(actual.get());
 
         } catch (DataAccessException e) {
-            response.put("Mensaje", "Error al buscar cliente");
+            response.put("Mensaje", "Error al buscar insumo");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
 
@@ -129,7 +129,7 @@ public class Insumo_controller {
         try {
             repositorio.deleteById(id);
         } catch (DataAccessException e) {
-            response.put("Mensaje", "Error al eliminar cliente");
+            response.put("Mensaje", "Error al eliminar insumo");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
